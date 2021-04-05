@@ -18,8 +18,8 @@ namespace IlmoEuro {
 //------------------------------------------------------------------------
 WaveFoldSynthProcessor::WaveFoldSynthProcessor ()
 {
-	//--- set the wanted controller for our processor
-	setControllerClass (kWaveFoldSynthControllerUID);
+    //--- set the wanted controller for our processor
+    setControllerClass (kWaveFoldSynthControllerUID);
     m_voices.reserve(16);
 }
 
@@ -30,40 +30,40 @@ WaveFoldSynthProcessor::~WaveFoldSynthProcessor ()
 //------------------------------------------------------------------------
 tresult PLUGIN_API WaveFoldSynthProcessor::initialize (FUnknown* context)
 {
-	// Here the Plug-in will be instanciated
-	
-	//---always initialize the parent-------
-	tresult result = AudioEffect::initialize (context);
-	// if everything Ok, continue
-	if (result != kResultOk)
-	{
-		return result;
-	}
+    // Here the Plug-in will be instanciated
 
-	//--- create Audio IO ------
+    //---always initialize the parent-------
+    tresult result = AudioEffect::initialize (context);
+    // if everything Ok, continue
+    if (result != kResultOk)
+    {
+        return result;
+    }
+
+    //--- create Audio IO ------
     addAudioInput (STR16 ("Stereo In"), Vst::SpeakerArr::kStereo);
     addAudioOutput (STR16 ("Stereo Out"), Vst::SpeakerArr::kStereo);
 
-	/* If you don't need an event bus, you can remove the next line */
-	addEventInput (STR16 ("Event In"), 1);
+    /* If you don't need an event bus, you can remove the next line */
+    addEventInput (STR16 ("Event In"), 1);
 
-	return kResultOk;
+    return kResultOk;
 }
 
 //------------------------------------------------------------------------
 tresult PLUGIN_API WaveFoldSynthProcessor::terminate ()
 {
-	// Here the Plug-in will be de-instanciated, last possibility to remove some memory!
-	
-	//---do not forget to call parent ------
-	return AudioEffect::terminate ();
+    // Here the Plug-in will be de-instanciated, last possibility to remove some memory!
+
+    //---do not forget to call parent ------
+    return AudioEffect::terminate ();
 }
 
 //------------------------------------------------------------------------
 tresult PLUGIN_API WaveFoldSynthProcessor::setActive (TBool state)
 {
-	//--- called when the Plug-in is enable/disable (On/Off) -----
-	return AudioEffect::setActive (state);
+    //--- called when the Plug-in is enable/disable (On/Off) -----
+    return AudioEffect::setActive (state);
 }
 
 //------------------------------------------------------------------------
@@ -96,9 +96,9 @@ tresult PLUGIN_API WaveFoldSynthProcessor::process (Vst::ProcessData& data)
                 case kParamGainD: m_gainD = value; break;
                 case kParamGainS: m_gainS = value; break;
                 case kParamGainR: m_gainR = value; break;
-				}
-			}
-		}
+                }
+            }
+        }
     }
 
     for (int32 i = 0; data.inputEvents && i < data.inputEvents->getEventCount(); i++)
@@ -166,28 +166,28 @@ tresult PLUGIN_API WaveFoldSynthProcessor::process (Vst::ProcessData& data)
 //------------------------------------------------------------------------
 tresult PLUGIN_API WaveFoldSynthProcessor::setupProcessing (Vst::ProcessSetup& newSetup)
 {
-	//--- called before any processing ----
-	return AudioEffect::setupProcessing (newSetup);
+    //--- called before any processing ----
+    return AudioEffect::setupProcessing (newSetup);
 }
 
 //------------------------------------------------------------------------
 tresult PLUGIN_API WaveFoldSynthProcessor::canProcessSampleSize (int32 symbolicSampleSize)
 {
-	// by default kSample32 is supported
-	if (symbolicSampleSize == Vst::kSample32)
+    // by default kSample32 is supported
+    if (symbolicSampleSize == Vst::kSample32)
         return kResultTrue;
 
-	// disable the following comment if your processing support kSample64
-	/* if (symbolicSampleSize == Vst::kSample64)
-		return kResultTrue; */
+    // disable the following comment if your processing support kSample64
+    /* if (symbolicSampleSize == Vst::kSample64)
+        return kResultTrue; */
 
-	return kResultFalse;
+    return kResultFalse;
 }
 
 //------------------------------------------------------------------------
 tresult PLUGIN_API WaveFoldSynthProcessor::setState (IBStream* state)
 {
-	// called when we load a preset, the model has to be reloaded
+    // called when we load a preset, the model has to be reloaded
     IBStreamer s (state, kLittleEndian);
 
     if (s.readFloat(m_timbre) == false)
@@ -235,13 +235,13 @@ tresult PLUGIN_API WaveFoldSynthProcessor::setState (IBStream* state)
         return kResultFalse;
     }
 
-	return kResultOk;
+    return kResultOk;
 }
 
 //------------------------------------------------------------------------
 tresult PLUGIN_API WaveFoldSynthProcessor::getState (IBStream* state)
 {
-	// here we need to save the model
+    // here we need to save the model
     IBStreamer s (state, kLittleEndian);
 
     s.writeFloat(m_timbre);
@@ -254,7 +254,7 @@ tresult PLUGIN_API WaveFoldSynthProcessor::getState (IBStream* state)
     s.writeFloat(m_gainS);
     s.writeFloat(m_gainR);
 
-	return kResultOk;
+    return kResultOk;
 }
 
 //------------------------------------------------------------------------

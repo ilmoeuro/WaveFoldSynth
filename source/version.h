@@ -25,12 +25,12 @@
 // Version without build number (example "1.0.3")
 #define VERSION_STR MAJOR_VERSION_STR "." SUB_VERSION_STR "." RELEASE_NUMBER_STR
 
-#define stringOriginalFilename	"WaveFoldSynth.vst3"
+#define stringOriginalFilename    "WaveFoldSynth.vst3"
 #if SMTG_PLATFORM_64
-#define stringFileDescription	"WaveFoldSynth VST3 (64Bit)"
+#define stringFileDescription    "WaveFoldSynth VST3 (64Bit)"
 #else
-#define stringFileDescription	"WaveFoldSynth VST3"
+#define stringFileDescription    "WaveFoldSynth VST3"
 #endif
-#define stringCompanyName		"Ilmo Euro\0"
-#define stringLegalCopyright	"Copyright(c) 2021 Ilmo Euro."
-#define stringLegalTrademarks	"VST is a trademark of Steinberg Media Technologies GmbH"
+#define stringCompanyName        "Ilmo Euro\0"
+#define stringLegalCopyright    "Copyright(c) 2021 Ilmo Euro."
+#define stringLegalTrademarks    "VST is a trademark of Steinberg Media Technologies GmbH"

@@ -10,7 +10,6 @@
 #include "pluginterfaces/vst/ivstevents.h"
 
 using namespace Steinberg;
-using namespace Steinberg::Vst;
 
 namespace IlmoEuro {
 //------------------------------------------------------------------------
@@ -103,9 +102,9 @@ tresult PLUGIN_API WaveFoldSynthProcessor::process (Vst::ProcessData& data)
 
     for (int32 i = 0; data.inputEvents && i < data.inputEvents->getEventCount(); i++)
     {
-        Event event;
+        Vst::Event event;
         data.inputEvents->getEvent(i, event);
-        if (event.type == Event::EventTypes::kNoteOnEvent)
+        if (event.type == Vst::Event::EventTypes::kNoteOnEvent)
         {
             m_voices.emplace_back(
                         event.sampleOffset,
@@ -122,7 +121,7 @@ tresult PLUGIN_API WaveFoldSynthProcessor::process (Vst::ProcessData& data)
                         event.noteOn.pitch
             );
         }
-        if (event.type == Event::EventTypes::kNoteOffEvent)
+        if (event.type == Vst::Event::EventTypes::kNoteOffEvent)
         {
             for (auto &voice: m_voices)
             {
@@ -134,9 +133,9 @@ tresult PLUGIN_API WaveFoldSynthProcessor::process (Vst::ProcessData& data)
         }
     }
 
-    SpeakerArrangement arr;
-    getBusArrangement (kOutput, 0, arr);
-    int32 numChannels = SpeakerArr::getChannelCount (arr);
+    Vst::SpeakerArrangement arr;
+    getBusArrangement (Vst::kOutput, 0, arr);
+    int32 numChannels = Vst::SpeakerArr::getChannelCount (arr);
 
     for (int32 sample = 0; sample < data.numSamples; sample++)
     {

@@ -174,6 +174,7 @@ tresult PLUGIN_API WaveFoldSynthController::getState (IBStream* state)
 //------------------------------------------------------------------------
 IPlugView* PLUGIN_API WaveFoldSynthController::createView (FIDString name)
 {
+    /*
     // Here the Host wants to open your editor (if you have one)
     if (FIDStringsEqual (name, Vst::ViewType::kEditor))
     {
@@ -181,6 +182,7 @@ IPlugView* PLUGIN_API WaveFoldSynthController::createView (FIDString name)
         auto* view = new VSTGUI::VST3Editor (this, "view", "EDITOR.UIDESC");
         return view;
     }
+    */
     return nullptr;
 }
 

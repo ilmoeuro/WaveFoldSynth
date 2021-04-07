@@ -109,6 +109,7 @@ tresult PLUGIN_API WaveFoldSynthProcessor::process (Vst::ProcessData& data)
             m_voices.emplace_back(
                         event.sampleOffset,
                         data.processContext->sampleRate,
+                        event.noteOn.velocity,
                         m_timbre,
                         m_timbreA,
                         m_timbreD,

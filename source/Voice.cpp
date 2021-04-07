@@ -24,7 +24,7 @@ Vst::Sample32 Voice::processSample()
     {
         m_phase -= 2.f * M_PI;
     }
-    return envelope(false) *
+    return m_velocity * envelope(false) *
             fold((1.f + 15.f*m_timbreAmt*envelope(true)) * std::sinf(m_phase));
 }
 

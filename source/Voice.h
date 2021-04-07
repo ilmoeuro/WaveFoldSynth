@@ -11,6 +11,7 @@ class Voice
 public:
     Voice(int32 delay,
           float sampleRate,
+          float velocity,
           float timbreAmt,
           float timbreA,
           float timbreD,
@@ -24,6 +25,7 @@ public:
         : m_delay(delay)
         , m_noteOffDelay(-1)
         , m_sampleRate(sampleRate)
+        , m_velocity(velocity)
         , m_timbreAmt(timbreAmt)
         , m_timbreA(timbreA)
         , m_timbreD(timbreD)
@@ -52,6 +54,7 @@ protected:
     int32 m_delay;
     int32 m_noteOffDelay;
     float m_sampleRate;
+    float m_velocity;
     float m_timbreAmt;
     float m_timbreA;
     float m_timbreD;

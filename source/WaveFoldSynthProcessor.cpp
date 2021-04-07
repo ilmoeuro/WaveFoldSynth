@@ -102,7 +102,7 @@ tresult PLUGIN_API WaveFoldSynthProcessor::process (Vst::ProcessData& data)
 
     for (int32 i = 0; data.inputEvents && i < data.inputEvents->getEventCount(); i++)
     {
-        Vst::Event event;
+        Vst::Event event{};
         data.inputEvents->getEvent(i, event);
         if (event.type == Vst::Event::EventTypes::kNoteOnEvent)
         {

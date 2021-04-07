@@ -87,63 +87,63 @@ tresult PLUGIN_API WaveFoldSynthController::setComponentState (IBStream* state)
     IBStreamer s(state, kLittleEndian);
 
     float timbre = 0.f;
-    if (s.readFloat(timbre) == false)
+    if (!s.readFloat(timbre))
     {
         return kResultFalse;
     }
     setParamNormalized(kParamTimbre, timbre);
 
     float timbreA = 0.f;
-    if (s.readFloat(timbreA) == false)
+    if (!s.readFloat(timbreA))
     {
         return kResultFalse;
     }
     setParamNormalized(kParamTimbreA, timbreA);
 
     float timbreD = 0.f;
-    if (s.readFloat(timbreD) == false)
+    if (!s.readFloat(timbreD))
     {
         return kResultFalse;
     }
     setParamNormalized(kParamTimbreD, timbreD);
 
     float timbreS = 0.f;
-    if (s.readFloat(timbreS) == false)
+    if (!s.readFloat(timbreS))
     {
         return kResultFalse;
     }
     setParamNormalized(kParamTimbreS, timbreS);
 
     float timbreR = 0.f;
-    if (s.readFloat(timbreR) == false)
+    if (!s.readFloat(timbreR))
     {
         return kResultFalse;
     }
     setParamNormalized(kParamTimbreR, timbreR);
 
     float gainA = 0.f;
-    if (s.readFloat(gainA) == false)
+    if (!s.readFloat(gainA))
     {
         return kResultFalse;
     }
     setParamNormalized(kParamGainA, gainA);
 
     float gainD = 0.f;
-    if (s.readFloat(gainD) == false)
+    if (!s.readFloat(gainD))
     {
         return kResultFalse;
     }
     setParamNormalized(kParamGainD, gainD);
 
     float gainS = 0.f;
-    if (s.readFloat(gainS) == false)
+    if (!s.readFloat(gainS))
     {
         return kResultFalse;
     }
     setParamNormalized(kParamGainS, gainS);
 
     float gainR = 0.f;
-    if (s.readFloat(gainR) == false)
+    if (!s.readFloat(gainR))
     {
         return kResultFalse;
     }
@@ -174,7 +174,6 @@ tresult PLUGIN_API WaveFoldSynthController::getState (IBStream* state)
 //------------------------------------------------------------------------
 IPlugView* PLUGIN_API WaveFoldSynthController::createView (FIDString name)
 {
-    /*
     // Here the Host wants to open your editor (if you have one)
     if (FIDStringsEqual (name, Vst::ViewType::kEditor))
     {
@@ -182,7 +181,6 @@ IPlugView* PLUGIN_API WaveFoldSynthController::createView (FIDString name)
         auto* view = new VSTGUI::VST3Editor (this, "view", "EDITOR.UIDESC");
         return view;
     }
-    */
     return nullptr;
 }
 

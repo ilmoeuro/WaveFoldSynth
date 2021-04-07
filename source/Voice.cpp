@@ -45,7 +45,7 @@ bool Voice::isDead()
 
 float Voice::fold(float x)
 {
-    return std::sinf(x);
+    return std::sinf(0.9f*x + 0.05f*x*x);
 }
 
 float Voice::envelope(bool timbre)
